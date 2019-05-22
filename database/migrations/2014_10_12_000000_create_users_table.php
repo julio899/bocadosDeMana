@@ -13,15 +13,19 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        $this->down();
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('type',10)->default('U');
             $table->rememberToken();
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
         });
+        $this->initData();          
     }
 
     /**
@@ -33,4 +37,22 @@ class CreateUsersTable extends Migration
     {
         Schema::dropIfExists('users');
     }
+
+    private function initData()
+    {
+        if (Schema::hasTable('users'))
+        {
+            //  cuando ya este creada la tabla
+            //  agregamos un usuario por defecto
+            DB::table('users')->insert(
+                array(
+                    'name'      => 'Administrador',
+                    'email'     => 'admin@admin.com',
+                    'password'  => Hash::make('admin'),
+                    'type'      => 'A'
+                )
+            );
+        }
+    }
+    
 }
