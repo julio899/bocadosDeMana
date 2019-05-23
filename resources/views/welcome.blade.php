@@ -46,10 +46,12 @@
 
             .title {
                 font-size: 84px;
+                color: azure;
+                cursor: default;
             }
 
             .links > a {
-                color: #636b6f;
+                color: azure;
                 padding: 0 25px;
                 font-size: 13px;
                 font-weight: 600;
@@ -61,6 +63,30 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            body{
+
+              /* Location of the image */
+              background-image: url(img/bg2.jpg);
+              
+              /* Background image is centered vertically and horizontally at all times */
+              /*background-position: center center;*/
+              background-position: center 90%;
+              
+              /* Background image doesn't tile */
+              background-repeat: no-repeat;
+              
+              /* Background image is fixed in the viewport so that it doesn't move when 
+                 the content's height is greater than the image's height */
+              background-attachment: fixed;
+              
+              /* This is what makes the background image rescale based
+                 on the container's size */
+              background-size: cover;
+              
+              /* Set a background color that will be displayed
+                 while the background image is loading */
+              background-color: #464646;
+            }
         </style>
     </head>
     <body>
@@ -70,10 +96,10 @@
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('login') }}">Ingreso</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
+                            <a href="{{ route('register') }}">Registro</a>
                         @endif
                     @endauth
                 </div>
@@ -81,17 +107,14 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Bocados de Mana
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="#Docs">Documentos</a>
+                    <a href="#Noticias">Noticias</a>
+                    <a href="#Blog">Blog</a>
+                    <a href="#">Proyecto</a>
                 </div>
             </div>
         </div>
