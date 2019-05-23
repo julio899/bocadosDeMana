@@ -19,6 +19,49 @@
     <!-- Styles -->
     <!--<link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link href="{{ asset('css/bootswatch.css') }}" rel="stylesheet">
+    <style>
+        
+            body{
+
+              /* Location of the image */
+              background-image: url(img/bg4.jpg);
+              
+              /* Background image is centered vertically and horizontally at all times */
+              /*background-position: center center;*/
+              background-position: 10% 100%;
+              
+              /* Background image doesn't tile */
+              background-repeat: no-repeat;
+              
+              /* Background image is fixed in the viewport so that it doesn't move when 
+                 the content's height is greater than the image's height */
+              background-attachment: fixed;
+              
+              /* This is what makes the background image rescale based
+                 on the container's size */
+              background-size: cover;
+              
+              /* Set a background color that will be displayed
+                 while the background image is loading */
+              background-color: #464646;
+            }
+            nav.navbar,.transp{
+                background-color: rgba(255, 255, 255, 0.15)!important;
+            }
+            nav a {
+                color: azure!important;
+            }
+            a.navbar-brand{
+                color: #5e5755!important
+            }
+            .inputRedondeado{
+                border-radius: 20px;
+            }
+            .loginForm{
+                margin-top: 20%;
+                border-radius: 7px;
+            }
+    </style>
 
 </head>
 <body>
