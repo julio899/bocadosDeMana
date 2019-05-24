@@ -73,6 +73,9 @@
             .colortext{
                 color: #5e5755!important;
             }
+            a.list-group-item {
+                font-size: 1.5em;
+            }
     </style>
 
 <script src="{{ asset('js/ckeditor.js') }}"></script>

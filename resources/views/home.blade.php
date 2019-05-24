@@ -11,13 +11,13 @@
               </a>
 
               @if ( $user->type === 'A')
-                  <a href="#" class="list-group-item list-group-item-action">
+                  <a href="#" class="list-group-item list-group-item-action disabled">
                     Enviar Recordatorio
                     <i class="fas fa-paper-plane"></i>
                   </a>
 
                   <a href="#" class="list-group-item list-group-item-action disabled">
-                    Difusion en Redes Sociaes 
+                   Redes Sociaes 
                   </a>
               @endif;
 
