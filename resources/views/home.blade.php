@@ -24,6 +24,11 @@
             </div>
         </div>
         <div class="col-md-9">
+          @if(session('success'))
+            <div class="alert alert-success" role="alert">
+              {{ session('success') }}
+            </div>
+          @endif
             <div class="card">
                 <div class="card-header">Bocados </div>
 

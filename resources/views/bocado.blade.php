@@ -17,12 +17,17 @@
     <div class="row">
 		
         <div class="col-md-12">
+          @if(session('error'))
+            <div class="alert alert-danger" role="alert">
+              {{ session('error') }}
+            </div>
+          @endif
 	        <form method="post" action="{{ route('bocado') }}">
 	       	@csrf
 	          <div class="form-group row">
 			    <h4 for="colFormLabelSm" class="col-sm-2 colortext">Titulo</h4>
 			    <div class="col-sm-10">
-			      <input type="email" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Tilulo para el Mensaje">
+			      <input type="text" name="title" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Tilulo para el Mensaje">
 			    </div>
 			  </div>
 			  <div class="form-group row">

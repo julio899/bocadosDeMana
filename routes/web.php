@@ -19,3 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/nuevoBocado', 'BocadoController@new')->name('bocado');
+
+// POST save data
+Route::post('/nuevoBocado', 'BocadoController@add')->name('bocado');
