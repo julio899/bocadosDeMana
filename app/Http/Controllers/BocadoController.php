@@ -31,15 +31,11 @@ class BocadoController extends Controller
 
     public function add(Request $request)
     {
-    	$title 		= $request->input('title');
-    	$message 	= $request->input('message');
-        $userId   	= Auth::user()->id;
-    	
     	$bocado = new Bocado();
     	
-    	$bocado->title = $title;
-    	$bocado->user_id = $userId;
-    	$bocado->message = $message;
+    	$bocado->title 	 = $request->input('title');
+    	$bocado->user_id = Auth::user()->id;
+    	$bocado->message = $request->input('message');
     	$bocado->confirm = 0;
 
 		$result=$bocado->save();
