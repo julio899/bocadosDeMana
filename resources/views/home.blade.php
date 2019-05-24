@@ -43,8 +43,12 @@
                       <tr>
                         <th scope="row">{{$b->id}}</th>
                         <td>{{$b->title}} 
-                          <i class="fas fa-bookmark"></i> 
+                          @if($b->confirm === 1)
+                          <i class="fas fa-bookmark"></i>
+                          @endif
+                          @if($b->confirm === 0)
                           <i class="far fa-bookmark"></i>
+                          @endif
                         </td>
                         <td>{{$b->created_at}}</td>
                         <td>{{$b->updated_at}}</td>

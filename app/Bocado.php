@@ -9,6 +9,6 @@ class Bocado extends Model
 {
     use Notifiable;
     protected $fillable = [
-        'title', 'idUser', 'message'
+        'title', 'idUser', 'message', 'confirm'
     ];
 }

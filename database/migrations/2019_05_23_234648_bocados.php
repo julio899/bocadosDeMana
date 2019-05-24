@@ -17,7 +17,8 @@ class Bocados extends Migration
         Schema::create('bocados', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('message');
+            $table->text('message');
+            $table->integer('confirm')->default(0);;
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
             $table->unsignedBigInteger('user_id')->unsigned();
