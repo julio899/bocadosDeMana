@@ -3,16 +3,17 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <div class="list-group">
               
               <a href="#" class="list-group-item list-group-item-action active">
-                Crear Nuevo Articulo
+                Crear Nuevo Articulo <i class="fas fa-feather-alt"></i>
               </a>
 
               @if ( $user->type === 'A')
                   <a href="#" class="list-group-item list-group-item-action">
                     Enviar Recordatorio
+                    <i class="fas fa-paper-plane"></i>
                   </a>
 
                   <a href="#" class="list-group-item list-group-item-action disabled">
@@ -22,18 +23,41 @@
 
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Bocados </div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                    <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Creacion</th>
+                        <th scope="col">Actualizaci&oacute;n</th>
+                        <th scope="col">Opciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      @foreach( $bocados as $b)
+                      <tr>
+                        <th scope="row">{{$b->id}}</th>
+                        <td>{{$b->title}} 
+                          <i class="fas fa-bookmark"></i> 
+                          <i class="far fa-bookmark"></i>
+                        </td>
+                        <td>{{$b->created_at}}</td>
+                        <td>{{$b->updated_at}}</td>
+                        <td>
+                          <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                          <a href="#" class="btn btn-success"><i class="fas fa-check-square"></i></a>
+                          <a href="" class="btn btn-danger"><i class="fa fa-eye-slash"></i></a>
 
-                    You are logged in!
+                        </td>
+                      </tr>
+                      @endforeach
+                    </tbody>
+                  </table>
                 </div>
             </div>
         </div>

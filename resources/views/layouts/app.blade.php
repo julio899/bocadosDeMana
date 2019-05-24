@@ -19,6 +19,7 @@
     <!-- Styles -->
     <!--<link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     <link href="{{ asset('css/bootswatch.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
     <style>
         
             body{
@@ -51,7 +52,7 @@
             nav a {
                 color: azure!important;
             }
-            a.navbar-brand{
+            a.navbar-brand,nav div.dropdown-menu a{
                 color: #5e5755!important
             }
             .inputRedondeado{
