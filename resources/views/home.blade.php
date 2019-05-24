@@ -6,7 +6,7 @@
         <div class="col-md-3">
             <div class="list-group">
               
-              <a href="#" class="list-group-item list-group-item-action active">
+              <a href="nuevoBocado" class="list-group-item list-group-item-action active">
                 Crear Nuevo Articulo <i class="fas fa-feather-alt"></i>
               </a>
 

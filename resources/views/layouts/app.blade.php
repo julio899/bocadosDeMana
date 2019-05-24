@@ -62,8 +62,20 @@
                 margin-top: 20%;
                 border-radius: 7px;
             }
+            textarea.message,.ck.ck-editor__main,.ck.ck-editor__main>.ck-editor__editable{
+                argin-top: 0px;
+                margin-bottom: 0px;
+                width: 100%;
+                min-height: 400px;
+                resize: none;
+                overflow: auto;
+            }
+            .colortext{
+                color: #5e5755!important;
+            }
     </style>
 
+<script src="{{ asset('js/ckeditor.js') }}"></script>
 </head>
 <body>
     <div id="app">
