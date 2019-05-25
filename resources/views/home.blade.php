@@ -64,10 +64,13 @@
                         <td>{{$b->updated_at}}</td>
                         <td>
                           <a href="edit/{{$b->id}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
-                          @if($b->confirm !== 1)
+                          @if($b->confirm !== 1 && $user->type === 'A')
                           <a href="#" class="btn btn-success"><i class="fas fa-check-square"></i></a>
                           @endif
-                          <a href="" class="btn btn-danger"><i class="fa fa-eye-slash"></i></a>
+                          
+                          @if($b->confirm !== 1)
+                          <a href="" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                          @endif
 
                         </td>
                       </tr>

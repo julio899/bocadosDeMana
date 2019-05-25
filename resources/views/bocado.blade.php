@@ -67,6 +67,9 @@ setTimeout(()=>{
 			    <div class="col-sm-10">
 			      @if(session('page')=='editBocado')
 			      	<textarea name="message" class="message" id="contentMessage">{{$bocado->message}}</textarea>
+				      	@if($user->type==='A')
+				      	<p>Enviado Por: {{ $editor->name }}  <em>Email:{{ $editor->email }}</em> </p>
+				      	@endif
 			      @else
 	              	<textarea name="message" class="message" id="contentMessage"></textarea>
 			      @endif

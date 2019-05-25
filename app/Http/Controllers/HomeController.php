@@ -24,8 +24,13 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $bocados = Bocado::orderBy('id')->get();
         $user    = Auth::user();
+        
+        if(Auth::user()->type === 'A') {
+            $bocados = Bocado::orderBy('id')->get();
+        } else{
+            $bocados = Bocado::orderBy('id')->where('user_id',$user->id)->get();            
+        }
         session(['page' => 'home']);
         return view( 'home',compact('bocados','user') )->with('page','home');          
     }

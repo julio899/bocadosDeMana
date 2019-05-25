@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Bocado;
 
 class BocadoController extends Controller
@@ -37,7 +38,6 @@ class BocadoController extends Controller
 
 
         if( $request->route()->named('bocadoEdit') ) {
-
             // si es administrador se le permite editar
             // cualquiera en caso de ser user solo si es el
             // usuario que lo creeo
@@ -46,11 +46,14 @@ class BocadoController extends Controller
             }else{
                 $bocado = Bocado::where('id',$parametros['id'])->where('user_id',$user->id)->get();
             }
+            
 
             if(count($bocado) > 0) {
+                $userEditor=DB::table('users')->where('id', $bocado[0]->user_id)->get();
                 $bocado=$bocado[0];
+                $editor=$userEditor[0];
                 session(['page' => 'editBocado']);
-                return view( 'bocado',compact('bocado','user') );          
+                return view( 'bocado',compact('bocado','user','editor') );          
 
             } else {
 
