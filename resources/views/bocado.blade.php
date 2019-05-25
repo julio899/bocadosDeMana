@@ -1,18 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
+<script src="{{ asset('js/editorConfig.js') }}"></script>
 <script>
-	setTimeout( function(){
-
-	    ClassicEditor
-	        .create( document.querySelector( '#contentMessage' ) )
-	        .catch( error => {
-	            console.error( error );
-	        } );
-	        
-	},1000 );
+setTimeout(()=>{
+	document.getElementById('btnConfirm').addEventListener('click',(evt)=>{
+		console.log(evt); 
+		if(evt.target.className == 'btn btn-warning' )
+		{ 
+			evt.target.className = 'btn btn-success';
+			evt.target.children[0].className = 'fas fa-bookmark';
+			document.getElementById('confirmBocado').value=1;
+		}else{
+			evt.target.className = 'btn btn-warning';
+			evt.target.children[0].className = 'far fa-bookmark';
+			document.getElementById('confirmBocado').value=0;
+		}
+	});
+},1000);
+	
 </script>
-
 <div class="container">
     <div class="row">
 		
@@ -22,18 +29,47 @@
               {{ session('error') }}
             </div>
           @endif
-	        <form method="post" action="{{ route('bocado') }}">
+
+			@if(session('page')=='editBocado')
+	        	<form method="post" action="{{ route('bocadoEdit') }}" autocomplete="off">
+	        		<input type="hidden" name="idBocado" value="{{$bocado->id}}">
+	        		<input type="hidden" name="confirm" id="confirmBocado" value="{{$bocado->confirm}}">
+	        @else
+	        	<form method="post" action="{{ route('bocado') }}" autocomplete="off">
+	        @endif
 	       	@csrf
 	          <div class="form-group row">
-			    <h4 for="colFormLabelSm" class="col-sm-2 colortext">Titulo</h4>
+			    <h4 for="controlTitle" class="col-sm-2 colortext">Titulo</h4>
 			    <div class="col-sm-10">
-			      <input type="text" name="title" class="form-control form-control-sm" id="colFormLabelSm" placeholder="Tilulo para el Mensaje">
+			      @if(session('page')=='editBocado')
+			      	<input type="text" name="title" value="{{$bocado->title}}" class="form-control form-control-sm in-title" id="controlTitle" placeholder="Tilulo para el mensaje" data-toggle="tooltip" data-placement="bottom" title="Escriba la Descripcion para este articulo">
+			      @else
+			      	<input type="text" name="title" class="form-control form-control-sm in-title" id="controlTitle" placeholder="Tilulo para el mensaje" data-toggle="tooltip" data-placement="bottom" title="Escriba la Descripcion para este articulo">
+			      @endif
 			    </div>
 			  </div>
 			  <div class="form-group row">
-			    <h4 for="contentMessage" class="col-sm-2 colortext">Mensaje</h4>
+			  	<div class="col-sm-2">			  		
+			    	<h4 for="contentMessage" class="colortext">Mensaje</h4>
+					@if($user->type==='A' && session('page')=='editBocado')
+
+						<label class="colortext" style="margin-top: 20px;">Opciones</label>
+			    		<div class="btn-group btn-group-vertical btn-block" role="group">
+						  @if($bocado->confirm === 1)
+						  	<button type="button" class="btn btn-success" id="btnConfirm"><i class="fas fa-bookmark"></i> Confirmado</button>
+
+						  @else
+						  	<button type="button" class="btn btn-warning" id="btnConfirm"><i class="far fa-bookmark"></i> Confirmar</button>
+						  @endif
+						</div>
+					@endif
+			  	</div>
 			    <div class="col-sm-10">
-	              <textarea name="message" class="message" id="contentMessage"></textarea>
+			      @if(session('page')=='editBocado')
+			      	<textarea name="message" class="message" id="contentMessage">{{$bocado->message}}</textarea>
+			      @else
+	              	<textarea name="message" class="message" id="contentMessage"></textarea>
+			      @endif
 			    </div>
 			  </div>
 

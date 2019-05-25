@@ -29,6 +29,11 @@
               {{ session('success') }}
             </div>
           @endif
+          @if(session('error'))
+            <div class="alert alert-danger" role="alert">
+              {{ session('error') }}
+            </div>
+          @endif
             <div class="card">
                 <div class="card-header">Bocados </div>
 
@@ -58,8 +63,10 @@
                         <td>{{$b->created_at}}</td>
                         <td>{{$b->updated_at}}</td>
                         <td>
-                          <a href="#" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                          <a href="edit/{{$b->id}}" class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                          @if($b->confirm !== 1)
                           <a href="#" class="btn btn-success"><i class="fas fa-check-square"></i></a>
+                          @endif
                           <a href="" class="btn btn-danger"><i class="fa fa-eye-slash"></i></a>
 
                         </td>

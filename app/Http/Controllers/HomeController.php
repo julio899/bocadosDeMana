@@ -26,7 +26,7 @@ class HomeController extends Controller
     {
         $bocados = Bocado::orderBy('id')->get();
         $user    = Auth::user();
-
-        return view( 'home',compact('bocados','user') );          
+        session(['page' => 'home']);
+        return view( 'home',compact('bocados','user') )->with('page','home');          
     }
 }

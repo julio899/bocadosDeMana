@@ -25,7 +25,7 @@
             body{
 
               /* Location of the image */
-              background-image: url(img/bg4.jpg);
+              background-image: url(../img/bg4.jpg);
               
               /* Background image is centered vertically and horizontally at all times */
               /*background-position: center center;*/
@@ -76,6 +76,21 @@
             a.list-group-item {
                 font-size: 1.5em;
             }
+            input[type=number]::-webkit-inner-spin-button, 
+            input[type=number]::-webkit-outer-spin-button { 
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                margin: 0; 
+            }
+            .in-title {
+                border-radius: 7px;
+                min-height: 50px;
+                font-size: 1.8em;
+                background-color: rgba(255,255,255,0.5);
+                font-style: oblique;
+                font-weight: 100;
+            }
     </style>
 
 <script src="{{ asset('js/ckeditor.js') }}"></script>
@@ -84,9 +99,10 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/home') }}">
                     Bocados de Mana
                 </a>
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
