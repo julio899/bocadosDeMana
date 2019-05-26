@@ -9,11 +9,13 @@ class BlogController extends Controller
 {
     public function __construct()
     {
-        session(['page' => 'blog']);
+        session(['page' => 'blogi']);
     }
     public function index(Request $request)
     {
         $bocados = Bocado::orderBy('id')->get();
-        return view( 'layouts.blog',compact('bocados'));          
+        // return view( 'layouts.blog',compact('bocados'));
+        session(['page' => 'blog']);          
+    	return view( 'blogi',compact('bocados'));          
     }
 }

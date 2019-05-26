@@ -65,7 +65,7 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Home</a>
+            <a class="nav-link" href="/blog">Blog</a>
           </li>
         <!--
           <li class="nav-item">
@@ -99,44 +99,15 @@
   </header>
 
   <!-- Post Content -->
-  <article>
-    <div class="container">
-      <div class="row">
+@if(session('page')==='blog')
+   @yield('content')
+@endif
 
-        <div class="col-lg-8 col-md-10 mx-auto">
-          @foreach($bocados as $b)
-          <div class="post-preview">
-            <a href="#">
-              <h2 class="post-title">
-                {{$b->title}}
-              </h2>
-              <h3 class="post-subtitle">
-                {{ str_limit( str_replace('&nbsp;','',strip_tags($b->message)),110) }}
-              </h3>
-            </a>
-            <p class="post-meta">Publicado en {{$b->created_at}}</p>
-          </div>
-          <hr>
-          @endforeach
-        </div>
-        <div class="col-lg-4 col-md-10 mx-auto">
-          <pre>Entradas Recientes</pre>
-          <ul class="recientes">
-            @foreach($bocados as $b)
-              <li>
-                <a class="f-txt" href="#">
-                  {{$b->title}}
-                </a>
-              </li>
-            @endforeach          
-          </ul>
-        </div>
+@if(session('page')==='blogi')
+  @yield('contenti')
+@endif
 
-      </div>
-    </div>
-  </article>
-
-  <hr>
+<hr>
 
   <!-- Footer -->
   <footer>
