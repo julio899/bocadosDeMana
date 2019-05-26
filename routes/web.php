@@ -15,9 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 /*PUBLICO*/
+/*
 Route::get('/blog', function () {
     return view('layouts.blog');
 });
+*/
+Route::get('/blog', 'BlogController@index')->name('blog');
 
 Auth::routes();
 
