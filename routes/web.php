@@ -14,6 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+/*PUBLICO*/
+Route::get('/blog', function () {
+    return view('layouts.blog');
+});
 
 Auth::routes();
 
