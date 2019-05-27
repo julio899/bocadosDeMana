@@ -21,6 +21,7 @@ Route::get('/blog', function () {
 });
 */
 Route::get('/blog', 'BlogController@index')->name('blog');
+Route::get('/blog/{id}/{title}', 'BlogController@individual')->name('blogi');
 
 Auth::routes();
 

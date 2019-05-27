@@ -18,4 +18,18 @@ class BlogController extends Controller
         session(['page' => 'blog']);          
     	return view( 'blogi',compact('bocados'));          
     }
+    public function individual(Request $request)
+    {
+        $parametros = $request->route()->parameters();
+        $bocado = Bocado::where('id',$parametros['id'])->get();
+        $bocados = Bocado::orderBy('id')->get();
+        if(count($bocado)>0)
+        {
+	        $bocado = $bocado[0];
+        	session(['page' => 'blogi']);          
+            return view( 'blogi',compact('bocado','bocados') );       
+        }else{
+        	return redirect()->action('HomeController@index')->with('error','Lo sentimos pero la URL no fue encontrada o es invalida');
+        }
+    }
 }
