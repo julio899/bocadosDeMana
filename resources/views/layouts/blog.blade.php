@@ -50,6 +50,12 @@
   ul.recientes li>a.f-txt:hover{
     color: #000!important;
   }
+a.navbar-brand{
+  font-weight: 200!important;
+  font-size: 1.5em;
+  text-decoration: none;
+  color:#fff;
+}
   </style>
 </head>
 
@@ -58,6 +64,9 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
+      @if(session('page')==='blogi')
+      <a href="/blog" class="navbar-brand">Bocados de Mana</a>
+      @endif
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -89,10 +98,21 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
-          <div class="site-heading">
-            <h1 class="title">Bocados de Mana</h1>
-            <span class="subheading">Palabra de Dios para tu vida.</span>
-          </div>
+
+            @if(session('page')==='blog')
+            <div class="site-heading">
+              <h1 class="title">Bocados de Mana</h1>
+              <span class="subheading">Palabra de Dios para tu vida.</span>
+            </div>
+            @endif
+
+            @if(session('page')==='blogi')
+            <div class="post-heading">
+              <h1 class="title" >{{$bocado->title}}</h1>
+              <!-- <h2 class="subheading">Problems look mighty small from 150 miles up</h2> -->
+            </div>
+            @endif
+
         </div>
       </div>
     </div>
