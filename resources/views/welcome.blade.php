@@ -113,7 +113,7 @@
                 <div class="links">
                     <a href="#Docs">Documentos</a>
                     <a href="#Noticias">Noticias</a>
-                    <a href="#Blog">Blog</a>
+                    <a href="/blog">Blog</a>
                     <a href="#">Proyecto</a>
                 </div>
             </div>

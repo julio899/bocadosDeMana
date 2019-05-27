@@ -51,15 +51,15 @@
       font-weight: 100!important;
     }
 
-blockquote {
- font-weight: 100!important;    
- overflow:hidden;
- padding-right:1.5em;
- padding-left:1.5em;
- margin-left:0;
- font-style:italic;
- border-left:5px solid #ccc
-}
+    blockquote {
+     font-weight: 100!important;    
+     overflow:hidden;
+     padding-right:1.5em;
+     padding-left:1.5em;
+     margin-left:0;
+     font-style:italic;
+     border-left:5px solid #ccc
+    }
   </style>
   <article>
     <div class="container">
