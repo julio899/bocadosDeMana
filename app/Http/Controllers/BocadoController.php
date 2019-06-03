@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\UploadedFile;
 use App\Bocado;
 
 class BocadoController extends Controller
@@ -40,7 +42,7 @@ class BocadoController extends Controller
         if( $request->route()->named('bocadoEdit') ) {
             // si es administrador se le permite editar
             // cualquiera en caso de ser user solo si es el
-            // usuario que lo creeo
+            // usuario que lo creo
             if($user->type === 'A') {
                 $bocado = Bocado::where('id',$parametros['id'])->get();
             }else{
@@ -65,6 +67,26 @@ class BocadoController extends Controller
 
     public function edition(Request $request)
     {   
+        // request()->validate([
+        //     'audio' => 'audio|mimes:mp3|max:10000',
+        // ]);
+
+        // Guardando Archivo
+        $file=$request->file('audio');
+        
+        if( $file!==null && 
+            $request->file('audio')->extension()==='mp3') { 
+            $file = $request->file('audio')->store('public/mp3');
+        }else if(   $file!==null &&
+                    (
+                        $request->file('audio')->extension()==='jpg' ||
+                        $request->file('audio')->extension()==='jpeg'||
+                        $request->file('audio')->extension()==='png'
+                    )    ) {
+            $nameFile = $file->hashName();
+            $file = $request->file('audio')->store('public/images');
+        }
+
         //Procesando la edicion
         if(Auth::user()->type === 'A') {
             $result = Bocado::where('id',$request->input('idBocado'))->update(

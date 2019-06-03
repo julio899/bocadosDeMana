@@ -31,12 +31,14 @@ setTimeout(()=>{
           @endif
 
 			@if(session('page')=='editBocado')
-	        	<form method="post" action="{{ route('bocadoEdit') }}" autocomplete="off">
+	        	<form method="post" action="{{ route('bocadoEdit') }}" enctype="multipart/form-data" autocomplete="off">
+	        		
 	        		<input type="hidden" name="idBocado" value="{{$bocado->id}}">
 	        		<input type="hidden" name="confirm" id="confirmBocado" value="{{$bocado->confirm}}">
 	        @else
 	        	<form method="post" action="{{ route('bocado') }}" autocomplete="off">
 	        @endif
+
 	       	@csrf
 	          <div class="form-group row">
 			    <h4 for="controlTitle" class="col-sm-2 colortext">Titulo</h4>
@@ -73,6 +75,10 @@ setTimeout(()=>{
 			      @else
 	              	<textarea name="message" class="message" id="contentMessage"></textarea>
 			      @endif
+
+
+		            <label for="audio">Audio MP3</label>
+		            <input type="file" name="audio" id="audio" accept="audio/mp3">
 			    </div>
 			  </div>
 
