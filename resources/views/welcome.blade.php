@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>Laravel</title>
 
@@ -118,5 +119,13 @@
                 </div>
             </div>
         </div>
+
+        <!--  test vue -->
+            <div id="app" class="content"><!--La equita id debe ser app, como hemos visto en app.js-->
+                <example-component></example-component><!--Añadimos nuestro componente vuejs-->
+            </div>
+        <script src="{{asset('js/app.js')}}"></script> 
+
+        <script src="/sw.js"></script>
     </body>
 </html>
