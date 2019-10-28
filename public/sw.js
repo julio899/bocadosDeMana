@@ -47,7 +47,7 @@ self.addEventListener('fetch', event => {
 	// 				}
 	// 			});
 	// });
-
+/*
 	// ------
 	let req = event.request;
 	let url = event.request.url;
@@ -73,5 +73,5 @@ self.addEventListener('fetch', event => {
 		return event.respondWith( caches.match(event.request) );	
 	}
 	
-	
+	*/
 });
