@@ -9,7 +9,7 @@ class FirebaseController extends Controller{
         $parametros = $request->route()->parameters();
 		return array(
         	'usuario' => $request->input('usuario'),
-        	'clave' => $request->input('clave')
+        	'clave' => $request->input('clave') 
 		);
 	}
 
