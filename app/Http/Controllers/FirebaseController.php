@@ -5,11 +5,11 @@ use \Firebase\JWT\JWT;
 class FirebaseController extends Controller{
 
 	function login(Request $request){
-		// $jwt = JWT::encode($request, 'bocados');
-        $parametros = $request->route()->parameters();
+		$jwt = JWT::encode($request, 'bocados');
 		return array(
-        	'usuario' => $request->input('usuario'),
-        	'clave' => $request->input('clave') 
+			'auth'=>[
+	        	'tk' => $jwt,
+			]
 		);
 	}
 
